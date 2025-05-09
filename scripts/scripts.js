@@ -1,5 +1,5 @@
 // 初始化电影数据
-const movies = [];
+let movies = [];  // 只声明一次
 
 // 加载电影数据
 async function loadMovies() {
