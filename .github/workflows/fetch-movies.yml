@@ -2,8 +2,8 @@ name: Fetch Movie Data
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 00:00 运行一次
-  workflow_dispatch:     # 手动触发支持
+    - cron: '0 0 * * *'
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false  # 禁用默认的 GitHub Actions 身份验证
+          persist-credentials: false
 
       # ✅ 设置 Node.js 环境
       - name: Set up Node.js
@@ -36,6 +36,11 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: |
           node scripts/fetch-movies.js
+
+      # ✅ 强制忽略未跟踪文件
+      - name: Ignore untracked files
+        run: |
+          git rm --cached package.json package-lock.json || true
 
       # ✅ 提交并推送数据
       - name: Commit and push the updated movie data
