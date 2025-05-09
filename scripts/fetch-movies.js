@@ -1,7 +1,8 @@
-require('dotenv').config();
 const axios = require('axios');
 const fs = require('fs');
-const API_KEY = process.env.TMDB_API_KEY;
+
+const API_KEY = process.env.TMDB_API_KEY;  // 从环境变量读取 API 密钥
+
 // 请求 URL
 const url = `https://api.themoviedb.org/3/movie/550?api_key=${API_KEY}&language=en-US`;
 
