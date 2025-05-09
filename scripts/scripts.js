@@ -7,18 +7,18 @@ async function loadMovies() {
         const response = await fetch('data/movies.json');  // 从 data 文件夹中的 movies.json 文件加载数据
         const data = await response.json();
         
-        console.log(data);  // 输出 data，检查它的类型
+        console.log(data);  // 输出 data，查看它的实际内容
 
-        if (Array.isArray(data)) {
-            // 格式化电影数据
+        // 如果 data 是一个对象且包含 results 数组
+        if (data.results && Array.isArray(data.results)) {
             const formattedMovies = data.results.map(movie => ({
-				id: movie.id,
-				title: movie.original_title,
-				poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-				rating: movie.vote_average,
-				year: movie.release_date.split('-')[0],
-				genre: movie.genres.map(g => g.name),
-				country: movie.production_countries.map(c => c.name).join(', '),
+                id: movie.id,
+                title: movie.original_title,
+                poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                rating: movie.vote_average,
+                year: movie.release_date.split('-')[0],
+                genre: movie.genres.map(g => g.name),
+                country: movie.production_countries.map(c => c.name).join(', '),
             }));
 
             // 将转换后的数据推入 movies 数组
@@ -27,7 +27,7 @@ async function loadMovies() {
             updateFilters();  // 更新筛选条件
             displayMovies(movies);  // 显示电影
         } else {
-            console.error("电影数据不是一个数组，无法格式化");
+            console.error("返回的数据不符合预期，无法处理");
         }
     } catch (error) {
         console.error('加载电影数据失败:', error);
