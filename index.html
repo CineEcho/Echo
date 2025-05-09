@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Echo</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="搜索影视作品..." oninput="searchMovies()">
+            <button onclick="searchMovies()">搜索</button>
+        </div>
+        <div class="filters">
+            <select id="yearFilter" onchange="applyFilters()">
+                <option value="">年份</option>
+            </select>
+            <select id="countryFilter" onchange="applyFilters()">
+                <option value="">国家</option>
+            </select>
+            <select id="genreFilter" onchange="applyFilters()">
+                <option value="">类别</option>
+            </select>
+            <select id="ratingFilter" onchange="applyFilters()">
+                <option value="">评分</option>
+            </select>
+        </div>
+    </header>
+    <main id="movie-list">
+        <!-- 影视作品列表 -->
+    </main>
+    <script src="scripts.js"></script>
+    <script>
+        // 初始化数据
+        const movies = [];
+        const filters = { year: [], country: [], genre: [], rating: [] };
+
+        // 从数据库加载电影数据
+        async function loadMovies() {
+            try {
+                const response = await fetch('movies.json');
+                const data = await response.json();
+                movies.push(...data);
+                updateFilters();
+                displayMovies(movies);
+            } catch (error) {
+                console.error('加载电影数据失败:', error);
+            }
+        }
+
+        // 实现搜索功能
+        function searchMovies() {
+            const keyword = document.getElementById('search').value.trim().toLowerCase();
+            const filtered = movies.filter(movie =>
+                movie.title.toLowerCase().includes(keyword) ||
+                movie.genre.some(g => g.toLowerCase().includes(keyword)) ||
+                movie.country.toLowerCase().includes(keyword) ||
+                movie.year.includes(keyword) ||
+                movie.rating.includes(keyword)
+            );
+            displayMovies(filtered);
+        }
+
+        // 更新筛选条件
+        function updateFilters() {
+            const years = new Set();
+            const countries = new Set();
+            const genres = new Set();
+            const ratings = new Set();
+
+            movies.forEach(movie => {
+                years.add(movie.year);
+                countries.add(movie.country);
+                movie.genre.forEach(g => genres.add(g));
+                ratings.add(movie.rating);
+            });
+
+            setOptions('yearFilter', years);
+            setOptions('countryFilter', countries);
+            setOptions('genreFilter', genres);
+            setOptions('ratingFilter', ratings);
+        }
+
+        // 设置筛选选项
+        function setOptions(id, values) {
+            const select = document.getElementById(id);
+            select.innerHTML = '<option value="">全部</option>';
+            Array.from(values).sort().forEach(value => {
+                select.innerHTML += `<option value="${value}">${value}</option>`;
+            });
+        }
+
+        // 筛选电影
+        function applyFilters() {
+            const year = document.getElementById('yearFilter').value;
+            const country = document.getElementById('countryFilter').value;
+            const genre = document.getElementById('genreFilter').value;
+            const rating = document.getElementById('ratingFilter').value;
+
+            const filtered = movies.filter(movie => {
+                return (!year || movie.year == year) &&
+                       (!country || movie.country == country) &&
+                       (!genre || movie.genre.includes(genre)) &&
+                       (!rating || movie.rating == rating);
+            });
+
+            displayMovies(filtered);
+        }
+
+        // 显示电影列表
+        function displayMovies(list) {
+            const container = document.getElementById('movie-list');
+            container.innerHTML = list.map(movie => `
+                <div class="movie-card">
+                    <img src="${movie.poster}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                    <p>评分: ${movie.rating}</p>
+                    <button onclick="viewDetails('${movie.id}')">查看详情</button>
+                </div>
+            `).join('');
+        }
+
+        // 进入详情页
+        function viewDetails(id) {
+            location.href = `details.html?id=${id}`;
+        }
+
+        // 加载数据
+        loadMovies();
+    </script>
+</body>
+</html>

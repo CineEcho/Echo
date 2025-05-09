@@ -1,0 +1,37 @@
+name: Fetch Movie Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 00:00 UTC 执行一次任务
+  push:
+    branches:
+      - main  # 在主分支推送时触发
+
+jobs:
+  fetch-movie-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # 选择合适的 Node.js 版本
+
+      - name: Install dependencies
+        run: |
+          npm install axios
+
+      - name: Run the movie fetch script
+        run: |
+          node scripts/fetch-movies.js
+
+      - name: Commit and push the updated movie data
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add data/movies.json
+          git commit -m "Update movie data"
+          git push
