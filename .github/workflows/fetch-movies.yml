@@ -40,7 +40,8 @@ jobs:
       # ✅ 强制忽略未跟踪文件
       - name: Ignore untracked files
         run: |
-          git rm --cached package.json package-lock.json || true
+          git clean -fdx
+          git reset --hard
 
       # ✅ 提交并推送数据
       - name: Commit and push the updated movie data
