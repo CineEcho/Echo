@@ -5,7 +5,7 @@ on:
     - cron: '0 0 * * *'  # 每天 00:00 UTC 执行一次任务
   push:
     branches:
-      - main  # 在主分支推送时触发
+      - main
 
 jobs:
   fetch-movie-data:
@@ -18,13 +18,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # 选择合适的 Node.js 版本
+          node-version: '14'
 
       - name: Install dependencies
         run: |
           npm install axios
 
       - name: Run the movie fetch script
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}  # 使用 GitHub Secrets 中的 API 密钥
         run: |
           node scripts/fetch-movies.js
 
