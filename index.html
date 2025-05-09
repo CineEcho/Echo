@@ -40,7 +40,7 @@
         // 从数据库加载电影数据
         async function loadMovies() {
             try {
-                const response = await fetch('movies.json');
+                const response = await fetch('./data/movies.json');
                 const data = await response.json();
                 movies.push(...data);
                 updateFilters();
