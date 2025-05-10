@@ -37,10 +37,10 @@ background-color: #333;
 color: #e0e0e0;
 }
 
-/* 🎛️ 筛选按钮样式 /
+/* 🎛️ 筛选按钮样式 */
 .filters {
-margin-left: 20px; / 添加左侧空隙 /
-margin-bottom: 20px; / 添加底部空隙，使筛选区域与下方内容分开 */
+margin-left: 20px;
+margin-bottom: 20px;
 }
 
 .filter-group {
@@ -54,8 +54,8 @@ margin-bottom: 20px;
 .filter-category-label {
 font-weight: bold;
 margin-right: 8px;
-min-width: 60px; /* 确保标签有固定宽度，防止按钮跳动 /
-color: #aaaaaa; / 与您原有的颜色保持一致 */
+min-width: 60px;
+color: #aaaaaa;
 }
 
 .filter-group button {
@@ -82,13 +82,16 @@ border-color: #004080;
 .movie-card {
 background-color: #1f1f1f;
 border-radius: 10px;
-padding: 15px;
+padding: 0;
 margin: 15px;
 text-align: center;
 box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
-max-width: 200px;
+width: 200px;
 display: inline-block;
 transition: transform 0.3s, box-shadow 0.3s;
+cursor: pointer;
+position: relative;
+overflow: hidden;
 }
 
 .movie-card:hover {
@@ -98,13 +101,30 @@ box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
 
 .movie-card img {
 width: 100%;
-border-radius: 10px;
-margin-bottom: 10px;
+height: 300px;
+object-fit: cover;
+border-radius: 10px 10px 0 0;
+display: block;
 }
 
 .movie-card h3 {
-margin: 10px 0 5px;
+margin: 10px;
 color: #ffffff;
+font-size: 1em;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.movie-card .rating {
+position: absolute;
+bottom: 40px;
+left: 10px;
+background-color: rgba(0, 0, 0, 0.8);
+color: #ffd700;
+padding: 5px 10px;
+border-radius: 5px;
+font-weight: bold;
 }
 
 /* 📋 影片详情页样式 */
@@ -133,15 +153,81 @@ margin: 5px 0;
 color: #aaaaaa;
 }
 
+.movie-detail button {
+background-color: #007bff;
+color: #ffffff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 20px;
+}
+
+.movie-detail button:hover {
+background-color: #0056b3;
+}
+
 /* 📱 响应式布局 */
 @media (max-width: 768px) {
 .movie-card {
-max-width: 100%;
-margin: 10px 0;
+width: 150px;
+}
+
+.movie-card img {
+height: 225px;
 }
 
 .filter-group {
-    flex-direction: column;
-    align-items: center;
+flex-direction: column;
+align-items: center;
 }
+}
+
+/* ⭐ 评分作品区域样式 */
+#rated-movies {
+    margin: 20px;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+}
+
+#rated-movies h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.movie-card.rated {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card.rated:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+}
+
+.movie-card.rated img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie-card.rated h3 {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+.movie-card.rated p {
+    margin: 5px 0;
+    color: #aaaaaa;
 }
