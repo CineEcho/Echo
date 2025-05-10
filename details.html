@@ -3,57 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影片详情</title>
+    <title>影视详情 - Echo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>影片详情</h1>
-        <button onclick="goBack()">返回首页</button>
+        <h1>Echo</h1>
     </header>
-    <main id="movie-details">
-        <!-- 影片详情内容 -->
-    </main>
-    <script>
-        // 解析URL中的电影ID
-        const urlParams = new URLSearchParams(window.location.search);
-        const movieId = urlParams.get('id');
 
-        // 加载电影详情
-        async function loadMovieDetails() {
-            try {
-                const response = await fetch('movies.json');
-                const movies = await response.json();
-                const movie = movies.find(m => m.id === movieId);
-                if (movie) displayDetails(movie);
-            } catch (error) {
-                console.error('加载影片详情失败:', error);
-            }
-        }
+    <div class="movie-detail">
+        <img src="" alt="电影海报" id="movie-poster">
+        <h2 id="movie-title"></h2>
+        <p><strong>年份:</strong> <span id="movie-year"></span></p>
+        <p><strong>TMDB评分:</strong> <span id="movie-tmdb-rating"></span></p>
+        <p><strong>我的评分:</strong> <span id="my-rating"></span></p>
+        <p><strong>剧情简介:</strong></p>
+        <p id="movie-overview"></p>
+    </div>
 
-        // 显示电影详情
-        function displayDetails(movie) {
-            const container = document.getElementById('movie-details');
-            container.innerHTML = `
-                <div class="movie-detail">
-                    <img src="${movie.poster}" alt="${movie.title}">
-                    <h2>${movie.title}</h2>
-                    <p>年份: ${movie.year}</p>
-                    <p>国家: ${movie.country}</p>
-                    <p>类型: ${movie.genre.join(' / ')}</p>
-                    <p>评分: ${movie.rating}</p>
-                    <p>简介: ${movie.description || '暂无简介'}</p>
-                </div>
-            `;
-        }
-
-        // 返回首页
-        function goBack() {
-            window.location.href = 'index.html';
-        }
-
-        // 初始化
-        loadMovieDetails();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

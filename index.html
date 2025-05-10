@@ -1,134 +1,92 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echo</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="./scripts/script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Echo</h1>
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="搜索影视作品..." oninput="searchMovies()">
-            <button onclick="searchMovies()">搜索</button>
-        </div>
-        <div class="filters">
-            <select id="yearFilter" onchange="applyFilters()">
-                <option value="">年份</option>
-            </select>
-            <select id="countryFilter" onchange="applyFilters()">
-                <option value="">国家</option>
-            </select>
-            <select id="genreFilter" onchange="applyFilters()">
-                <option value="">类别</option>
-            </select>
-            <select id="ratingFilter" onchange="applyFilters()">
-                <option value="">评分</option>
-            </select>
-        </div>
+        <h1>🎥 Echo</h1>
     </header>
-    <main id="movie-list">
-        <!-- 影视作品列表 -->
-    </main>
-    <script src="scripts/scripts.js"></script>
-    <script>
-        // 初始化数据
-        const movies = [];
-        const filters = { year: [], country: [], genre: [], rating: [] };
 
-        // 从数据库加载电影数据
-        async function loadMovies() {
-            try {
-                const response = await fetch('./data/movies.json');
-                const data = await response.json();
-                movies.push(...data);
-                updateFilters();
-                displayMovies(movies);
-            } catch (error) {
-                console.error('加载电影数据失败:', error);
-            }
-        }
+    <!-- 筛选按钮 -->
+    <div class="filters">
+        <div class="filter-group" data-filter="category">
+			<span class="filter-category-label">频道：</span>
+			<button class="filter-btn active">电影</button>
+			<button class="filter-btn">剧集</button>
+			<button class="filter-btn">动漫</button>
+		</div>
 
-        // 实现搜索功能
-        function searchMovies() {
-            const keyword = document.getElementById('search').value.trim().toLowerCase();
-            const filtered = movies.filter(movie =>
-                movie.title.toLowerCase().includes(keyword) ||
-                movie.genre.some(g => g.toLowerCase().includes(keyword)) ||
-                movie.country.toLowerCase().includes(keyword) ||
-                movie.year.includes(keyword) ||
-                movie.rating.includes(keyword)
-            );
-            displayMovies(filtered);
-        }
+        <div class="filter-group" data-filter="genre">
+			<span class="filter-category-label">类型：</span>
+            <button class="filter-btn active">全部</button>
+            <button class="filter-btn">喜剧</button>
+            <button class="filter-btn">爱情</button>
+            <button class="filter-btn">恐怖</button>
+            <button class="filter-btn">动作</button>
+            <button class="filter-btn">科幻</button>
+            <button class="filter-btn">剧情</button>
+            <button class="filter-btn">犯罪</button>
+            <button class="filter-btn">奇幻</button>
+            <button class="filter-btn">悬疑</button>
+            <button class="filter-btn">惊悚</button>
+            <button class="filter-btn">家庭</button>
+            <button class="filter-btn">冒险</button>
+            <button class="filter-btn">同性</button>
+            <button class="filter-btn">运动</button>
+            <button class="filter-btn">战争</button>
+            <button class="filter-btn">灾难</button>
+        </div>
 
-        // 更新筛选条件
-        function updateFilters() {
-            const years = new Set();
-            const countries = new Set();
-            const genres = new Set();
-            const ratings = new Set();
+        <div class="filter-group" data-filter="region">
+			<span class="filter-category-label">地区：</span>
+            <button class="filter-btn active">全部</button>
+            <button class="filter-btn">美国</button>
+            <button class="filter-btn">日本</button>
+            <button class="filter-btn">韩国</button>
+            <button class="filter-btn">印度</button>
+            <button class="filter-btn">英国</button>
+            <button class="filter-btn">法国</button>
+            <button class="filter-btn">瑞典</button>
+            <button class="filter-btn">俄罗斯</button>
+            <button class="filter-btn">泰国</button>
+        </div>
 
-            movies.forEach(movie => {
-                years.add(movie.year);
-                countries.add(movie.country);
-                movie.genre.forEach(g => genres.add(g));
-                ratings.add(movie.rating);
-            });
+        <div class="filter-group" data-filter="year">
+			<span class="filter-category-label">年份：</span>
+            <button class="filter-btn active">全部</button>
+			<button class="filter-btn">2025</button>
+            <button class="filter-btn">2024</button>
+            <button class="filter-btn">2023</button>
+            <button class="filter-btn">2022</button>
+            <button class="filter-btn">2021</button>
+            <button class="filter-btn">2020</button>
+            <button class="filter-btn">2019</button>
+            <button class="filter-btn">2018</button>
+            <button class="filter-btn">2017</button>
+            <button class="filter-btn">2016</button>
+            <button class="filter-btn">2015</button>
+            <button class="filter-btn">2014</button>
+            <button class="filter-btn">2013</button>
+            <button class="filter-btn">2012</button>
+            <button class="filter-btn">2011</button>
+            <button class="filter-btn">2010</button>
+			<button class="filter-btn">2009</button>
+			<button class="filter-btn">2008</button>
+			<button class="filter-btn">2007</button>
+			<button class="filter-btn">2006</button>
+			<button class="filter-btn">2005</button>
+        </div>
+    </div>
 
-            setOptions('yearFilter', years);
-            setOptions('countryFilter', countries);
-            setOptions('genreFilter', genres);
-            setOptions('ratingFilter', ratings);
-        }
+    <!-- 电影列表 -->
+    <div id="movie-list"></div>
 
-        // 设置筛选选项
-        function setOptions(id, values) {
-            const select = document.getElementById(id);
-            select.innerHTML = '<option value="">全部</option>';
-            Array.from(values).sort().forEach(value => {
-                select.innerHTML += `<option value="${value}">${value}</option>`;
-            });
-        }
-
-        // 筛选电影
-        function applyFilters() {
-            const year = document.getElementById('yearFilter').value;
-            const country = document.getElementById('countryFilter').value;
-            const genre = document.getElementById('genreFilter').value;
-            const rating = document.getElementById('ratingFilter').value;
-
-            const filtered = movies.filter(movie => {
-                return (!year || movie.year == year) &&
-                       (!country || movie.country == country) &&
-                       (!genre || movie.genre.includes(genre)) &&
-                       (!rating || movie.rating == rating);
-            });
-
-            displayMovies(filtered);
-        }
-
-        // 显示电影列表
-        function displayMovies(list) {
-            const container = document.getElementById('movie-list');
-            container.innerHTML = list.map(movie => `
-                <div class="movie-card">
-                    <img src="${movie.poster}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                    <p>评分: ${movie.rating}</p>
-                    <button onclick="viewDetails('${movie.id}')">查看详情</button>
-                </div>
-            `).join('');
-        }
-
-        // 进入详情页
-        function viewDetails(id) {
-            location.href = `details.html?id=${id}`;
-        }
-
-        // 加载数据
-        loadMovies();
-    </script>
+    <!-- 电影详情 -->
+    <div id="movie-details" style="display:none;"></div>
 </body>
 </html>

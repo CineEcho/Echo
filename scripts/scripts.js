@@ -1,115 +1,76 @@
-// 初始化电影数据
-let movies = [];  // 只声明一次
+// script.js
 
-// 加载电影数据
-async function loadMovies() {
-    try {
-        const response = await fetch('data/movies.json');  // 从 data 文件夹中的 movies.json 文件加载数据
-        const data = await response.json();
-        
-        console.log(data);  // 输出 data，查看它的实际内容
+const API_KEY = process.env.TMDB_API_KEY;
+const BASE_URL = 'https://api.themoviedb.org/3';
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // 如果 data 是一个对象且包含 results 数组
-        if (data.results && Array.isArray(data.results)) {
-            const formattedMovies = data.results.map(movie => ({
-                id: movie.id,
-                title: movie.original_title,
-                poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                rating: movie.vote_average,
-                year: movie.release_date.split('-')[0],
-                genre: movie.genres.map(g => g.name),
-                country: movie.production_countries.map(c => c.name).join(', '),
-            }));
+// 当前筛选条件
+let filters = {
+    category: '电影',
+    genre: '全部',
+    region: '全部',
+    year: '全部'
+};
 
-            // 将转换后的数据推入 movies 数组
-            movies.push(...formattedMovies);
+// 初始化筛选状态
+function initFilters() {
+    document.querySelectorAll('.filter-group').forEach(group => {
+        const filterType = group.dataset.filter;
+        const buttons = group.querySelectorAll('button');
+        buttons.forEach(button => {
+            // 设置默认选中第一项
+            if (button.textContent === filters[filterType]) {
+                button.classList.add('active');
+            }
+            button.addEventListener('click', () => {
+                // 更新筛选条件
+                filters[filterType] = button.textContent === '全部' ? null : button.textContent;
 
-            updateFilters();  // 更新筛选条件
-            displayMovies(movies);  // 显示电影
-        } else {
-            console.error("返回的数据不符合预期，无法处理");
+                // 切换active类
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // 刷新电影列表
+                renderMovies();
+            });
+        });
+    });
+}
+
+// 渲染电影列表
+async function renderMovies() {
+    // 根据筛选条件获取电影数据
+    // 这里需要根据您的实际API调用逻辑来编写
+    // 以下为示例代码，需要您根据实际情况进行调整
+    let url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=zh-CN`;
+    for (const [key, value] of Object.entries(filters)) {
+        if (value && value !== '全部') {
+            url += `&${key}=${encodeURIComponent(value)}`;
         }
-    } catch (error) {
-        console.error('加载电影数据失败:', error);
     }
-}
+    const response = await fetch(url);
+    const data = await response.json();
+    const movies = data.results;
 
-// 显示电影列表
-function displayMovies(list) {
-    const container = document.getElementById('movie-list');
-    container.innerHTML = list.map(movie => `
-        <div class="movie-card">
-            <img src="${movie.poster}" alt="${movie.title}">
-            <h3>${movie.title}</h3>
-            <p>评分: ${movie.rating}</p>
-            <button onclick="viewDetails('${movie.id}')">查看详情</button>
-        </div>
-    `).join('');
-}
+    // 清空当前电影列表
+    const movieList = document.getElementById('movie-list');
+    movieList.innerHTML = '';
 
-// 查看电影详情
-function viewDetails(id) {
-    location.href = `details.html?id=${id}`;
-}
-
-// 更新筛选条件
-function updateFilters() {
-    const years = new Set();
-    const countries = new Set();
-    const genres = new Set();
-    const ratings = new Set();
-
+    // 遍历电影数据，创建电影卡片
     movies.forEach(movie => {
-        years.add(movie.year);
-        countries.add(movie.country);
-        movie.genre.forEach(g => genres.add(g));
-        ratings.add(movie.rating);
-    });
-
-    setOptions('yearFilter', years);
-    setOptions('countryFilter', countries);
-    setOptions('genreFilter', genres);
-    setOptions('ratingFilter', ratings);
-}
-
-// 设置筛选选项
-function setOptions(id, values) {
-    const select = document.getElementById(id);
-    select.innerHTML = '<option value="">全部</option>';
-    Array.from(values).sort().forEach(value => {
-        select.innerHTML += `<option value="${value}">${value}</option>`;
+        const movieCard = document.createElement('div');
+        movieCard.classList.add('movie-card');
+        movieCard.innerHTML = `
+            <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="${movie.title}">
+            <h3>${movie.title}</h3>
+            <p>评分: ${movie.vote_average}</p>
+        `;
+        movieList.appendChild(movieCard);
     });
 }
 
-// 搜索电影
-function searchMovies() {
-    const keyword = document.getElementById('search').value.trim().toLowerCase();
-    const filtered = movies.filter(movie =>
-        movie.title.toLowerCase().includes(keyword) ||
-        movie.genre.some(g => g.toLowerCase().includes(keyword)) ||
-        movie.country.toLowerCase().includes(keyword) ||
-        movie.year.includes(keyword) ||
-        movie.rating.includes(keyword)
-    );
-    displayMovies(filtered);
-}
-
-// 筛选电影
-function applyFilters() {
-    const year = document.getElementById('yearFilter').value;
-    const country = document.getElementById('countryFilter').value;
-    const genre = document.getElementById('genreFilter').value;
-    const rating = document.getElementById('ratingFilter').value;
-
-    const filtered = movies.filter(movie => {
-        return (!year || movie.year == year) &&
-               (!country || movie.country == country) &&
-               (!genre || movie.genre.includes(genre)) &&
-               (!rating || movie.rating == rating);
-    });
-
-    displayMovies(filtered);
-}
-
-// 加载数据
-loadMovies();
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+    initFilters();
+    renderMovies();
+});

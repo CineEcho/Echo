@@ -1,124 +1,147 @@
-/* 暗黑主题全局样式 */
+/* 🌑 暗黑主题全局样式 */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 0;
+font-family: Arial, sans-serif;
+background-color: #121212;
+color: #e0e0e0;
+margin: 0;
+padding: 0;
 }
 
+/* 🏠 页头样式 */
 header {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+background-color: #1f1f1f;
+color: #ffffff;
+padding: 20px;
+text-align: center;
+margin-bottom: 20px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 header h1 {
-    margin: 0;
+margin: 0;
 }
 
-button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* 搜索栏样式 */
+/* 🔎 搜索栏样式 */
 .search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+display: flex;
+justify-content: flex-start;
+margin-bottom: 20px;
 }
 
 .search-bar input {
-    width: 300px;
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #333;
-    color: #e0e0e0;
+width: 300px;
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #333;
+background-color: #333;
+color: #e0e0e0;
 }
 
-/* 筛选栏样式 */
+/* 🎛️ 筛选按钮样式 /
 .filters {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+margin-left: 20px; / 添加左侧空隙 /
+margin-bottom: 20px; / 添加底部空隙，使筛选区域与下方内容分开 */
 }
 
-.filters select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #333;
-    color: #e0e0e0;
+.filter-group {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+gap: 10px;
+margin-bottom: 20px;
 }
 
-/* 电影列表样式 */
+.filter-category-label {
+font-weight: bold;
+margin-right: 8px;
+min-width: 60px; /* 确保标签有固定宽度，防止按钮跳动 /
+color: #aaaaaa; / 与您原有的颜色保持一致 */
+}
+
+.filter-group button {
+background-color: #333;
+color: #e0e0e0;
+border: 1px solid #555;
+padding: 10px 15px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filter-group button.active {
+background-color: #007bff;
+border-color: #0056b3;
+}
+
+.filter-group button:hover {
+background-color: #0056b3;
+border-color: #004080;
+}
+
+/* 🎥 电影卡片样式 */
 .movie-card {
-    background-color: #1f1f1f;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px;
-    text-align: center;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
-    max-width: 200px;
-    display: inline-block;
-    transition: transform 0.3s, box-shadow 0.3s;
+background-color: #1f1f1f;
+border-radius: 10px;
+padding: 15px;
+margin: 15px;
+text-align: center;
+box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+max-width: 200px;
+display: inline-block;
+transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .movie-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+transform: scale(1.05);
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
 }
 
 .movie-card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
+width: 100%;
+border-radius: 10px;
+margin-bottom: 10px;
 }
 
 .movie-card h3 {
-    margin: 10px 0 5px;
-    color: #ffffff;
+margin: 10px 0 5px;
+color: #ffffff;
 }
 
-/* 影片详情页样式 */
+/* 📋 影片详情页样式 */
 .movie-detail {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+max-width: 600px;
+margin: 0 auto;
+background-color: #1f1f1f;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
 .movie-detail img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
+width: 100%;
+border-radius: 10px;
+margin-bottom: 20px;
 }
 
 .movie-detail h2 {
-    margin: 0 0 10px;
-    color: #ffffff;
+margin: 0 0 10px;
+color: #ffffff;
 }
 
 .movie-detail p {
-    margin: 5px 0;
-    color: #aaaaaa;
+margin: 5px 0;
+color: #aaaaaa;
+}
+
+/* 📱 响应式布局 */
+@media (max-width: 768px) {
+.movie-card {
+max-width: 100%;
+margin: 10px 0;
+}
+
+.filter-group {
+    flex-direction: column;
+    align-items: center;
+}
 }
