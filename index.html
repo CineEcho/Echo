@@ -1,92 +1,89 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echo</title>
+    <title>电影评分应用</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts/scripts.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>🎥 Echo</h1>
-    </header>
+    <div class="container">
+        <header>
+            <h1>电影评分</h1>
+        </header>
 
-    <!-- 筛选按钮 -->
-    <div class="filters">
-        <div class="filter-group" data-filter="category">
-			<span class="filter-category-label">频道：</span>
-			<button class="filter-btn active">电影</button>
-			<button class="filter-btn">剧集</button>
-			<button class="filter-btn">动漫</button>
-		</div>
-
-        <div class="filter-group" data-filter="genre">
-			<span class="filter-category-label">类型：</span>
-            <button class="filter-btn active">全部</button>
-            <button class="filter-btn">喜剧</button>
-            <button class="filter-btn">爱情</button>
-            <button class="filter-btn">恐怖</button>
-            <button class="filter-btn">动作</button>
-            <button class="filter-btn">科幻</button>
-            <button class="filter-btn">剧情</button>
-            <button class="filter-btn">犯罪</button>
-            <button class="filter-btn">奇幻</button>
-            <button class="filter-btn">悬疑</button>
-            <button class="filter-btn">惊悚</button>
-            <button class="filter-btn">家庭</button>
-            <button class="filter-btn">冒险</button>
-            <button class="filter-btn">同性</button>
-            <button class="filter-btn">运动</button>
-            <button class="filter-btn">战争</button>
-            <button class="filter-btn">灾难</button>
+        <div class="filters">
+            <div class="filter-group" data-filter="category">
+                <h3>类别</h3>
+                <div class="filter-buttons">
+                    <button class="active">电影</button>
+                    <button>剧集</button>
+                    <button>动漫</button>
+                </div>
+            </div>
+            
+            <div class="filter-group" data-filter="genre">
+                <h3>类型</h3>
+                <div class="filter-buttons">
+                    <button class="active">全部</button>
+                    <button>动作</button>
+                    <button>喜剧</button>
+                    <button>剧情</button>
+                    <button>科幻</button>
+                    <button>恐怖</button>
+                    <button>动画</button>
+                </div>
+            </div>
+            
+            <div class="filter-group" data-filter="region">
+                <h3>地区</h3>
+                <div class="filter-buttons">
+                    <button class="active">全部</button>
+                    <button>华语</button>
+                    <button>欧美</button>
+                    <button>日本</button>
+                    <button>韩国</button>
+                </div>
+            </div>
+            
+            <div class="filter-group" data-filter="year">
+                <h3>年份</h3>
+                <div class="filter-buttons">
+                    <button class="active">全部</button>
+                    <button>2025</button>
+                    <button>2024</button>
+                    <button>2023</button>
+                    <button>2022</button>
+                    <button>2021</button>
+                    <button>2020</button>
+                    <button>2019</button>
+                    <button>2018</button>
+                    <button>2017</button>
+                    <button>2016</button>
+                    <button>2015</button>
+                    <button>2014</button>
+                    <button>2013</button>
+                    <button>2012</button>
+                    <button>2011</button>
+                    <button>2010</button>
+                    <button>2009</button>
+                    <button>2008</button>
+                    <button>2007</button>
+                    <button>2006</button>
+                    <button>2005</button>
+                </div>
+            </div>
         </div>
 
-        <div class="filter-group" data-filter="region">
-			<span class="filter-category-label">地区：</span>
-            <button class="filter-btn active">全部</button>
-            <button class="filter-btn">美国</button>
-            <button class="filter-btn">日本</button>
-            <button class="filter-btn">韩国</button>
-            <button class="filter-btn">印度</button>
-            <button class="filter-btn">英国</button>
-            <button class="filter-btn">法国</button>
-            <button class="filter-btn">瑞典</button>
-            <button class="filter-btn">俄罗斯</button>
-            <button class="filter-btn">泰国</button>
-        </div>
+        <main>
+            <div id="movies-container" class="movies-grid"></div>
+        </main>
 
-        <div class="filter-group" data-filter="year">
-			<span class="filter-category-label">年份：</span>
-            <button class="filter-btn active">全部</button>
-			<button class="filter-btn">2025</button>
-            <button class="filter-btn">2024</button>
-            <button class="filter-btn">2023</button>
-            <button class="filter-btn">2022</button>
-            <button class="filter-btn">2021</button>
-            <button class="filter-btn">2020</button>
-            <button class="filter-btn">2019</button>
-            <button class="filter-btn">2018</button>
-            <button class="filter-btn">2017</button>
-            <button class="filter-btn">2016</button>
-            <button class="filter-btn">2015</button>
-            <button class="filter-btn">2014</button>
-            <button class="filter-btn">2013</button>
-            <button class="filter-btn">2012</button>
-            <button class="filter-btn">2011</button>
-            <button class="filter-btn">2010</button>
-			<button class="filter-btn">2009</button>
-			<button class="filter-btn">2008</button>
-			<button class="filter-btn">2007</button>
-			<button class="filter-btn">2006</button>
-			<button class="filter-btn">2005</button>
-        </div>
+        <footer>
+            <p>© 2024 电影评分应用</p>
+        </footer>
     </div>
 
-    <!-- 电影列表 -->
-    <div id="movie-list"></div>
-
-    <!-- 电影详情 -->
-    <div id="movie-details" style="display:none;"></div>
+    <script src="scripts/scripts.js"></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+{
+  "name": "movie-rating-app",
+  "version": "1.0.0",
+  "description": "电影评分应用",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.6",
+    "nodemon": "^2.0.22"
+  }
+}

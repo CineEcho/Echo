@@ -231,3 +231,25 @@ align-items: center;
     margin: 5px 0;
     color: #aaaaaa;
 }
+
+.error-message {
+    background-color: #fff3f3;
+    border: 1px solid #ffcdd2;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-message h3 {
+    color: #d32f2f;
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+.error-message p {
+    color: #666;
+    margin: 5px 0;
+    font-size: 0.9em;
+}

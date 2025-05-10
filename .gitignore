@@ -135,9 +135,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-
-# package
-node_modules/
-.env
-package.json
-package-lock.json
+# 项目特定文件
+scripts/config.js
