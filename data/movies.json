@@ -1,81 +1,310 @@
-{
-  "adult": false,
-  "backdrop_path": "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
-  "belongs_to_collection": null,
-  "budget": 63000000,
-  "genres": [
-    {
-      "id": 18,
-      "name": "Drama"
-    }
-  ],
-  "homepage": "http://www.foxmovies.com/movies/fight-club",
-  "id": 550,
-  "imdb_id": "tt0137523",
-  "origin_country": [
-    "US"
-  ],
-  "original_language": "en",
-  "original_title": "Fight Club",
-  "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
-  "popularity": 23.0762,
-  "poster_path": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
-  "production_companies": [
-    {
-      "id": 711,
-      "logo_path": "/tEiIH5QesdheJmDAqQwvtN60727.png",
-      "name": "Fox 2000 Pictures",
-      "origin_country": "US"
+[
+  {
+    "adult": false,
+    "backdrop_path": "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
+    "belongs_to_collection": null,
+    "budget": 63000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "剧情"
+      }
+    ],
+    "homepage": "",
+    "id": 550,
+    "imdb_id": "tt0137523",
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_title": "Fight Club",
+    "overview": "杰克( 爱德华·诺顿 Edward Norton 饰)是一个充满中年危机意识的人，他非常憎恨自己的生活及一切，再加上他患有严重的失眠症，所以他常常参加各种团体咨询会，只为了能接触人群。在某一个团体咨询会上，杰克遇上了一个跟他同样理由来参加的女烟枪，玛拉(海伦娜·邦汉·卡特 Helena Bonham Carter  饰)，在莫名激素的影响下，杰克和玛拉一起逃离了咨询会，两人的情愫因而滋生…  一个偶然的机会，杰克遇到了卖肥皂的商人泰勒(布拉德·皮特 Brad Pitt 饰)，一个浑身充满叛逆、残酷和暴烈的痞子英雄，并因为自己公寓失火而住进了泰勒破旧不堪的家中。两人因缘际会地成为了好朋友，并创立了“搏击俱乐部”：一个让人们不戴护具而徒手搏击，宗旨在于发泄情绪的地下组织。",
+    "popularity": 24.4663,
+    "poster_path": "/8v4jKpiXHIP83XcVkAED3r8oHrf.jpg",
+    "production_companies": [
+      {
+        "id": 711,
+        "logo_path": "/tEiIH5QesdheJmDAqQwvtN60727.png",
+        "name": "Fox 2000 Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 508,
+        "logo_path": "/7cxRWzi4LsVm4Utfpr1hfARNurT.png",
+        "name": "Regency Enterprises",
+        "origin_country": "US"
+      },
+      {
+        "id": 4700,
+        "logo_path": "/A32wmjrs9Psf4zw0uaixF0GXfxq.png",
+        "name": "Linson Entertainment",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      },
+      {
+        "id": 20555,
+        "logo_path": "/hD8yEGUBlHOcfHYbujp71vD8gZp.png",
+        "name": "Taurus Film",
+        "origin_country": "DE"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "1999-10-15",
+    "revenue": 100853753,
+    "runtime": 139,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "搏击俱乐部的第一条规则是你不要谈论搏击俱乐部",
+    "title": "搏击俱乐部",
+    "video": false,
+    "vote_average": 8.438,
+    "vote_count": 30235
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+    "belongs_to_collection": {
+      "id": 86311,
+      "name": "复仇者联盟（系列）",
+      "poster_path": "/8HxgBGdTI8Gviy2dKPW0iANYBZx.jpg",
+      "backdrop_path": "/zuW6fOiusv4X9nnW3paHGfXcSll.jpg"
     },
-    {
-      "id": 508,
-      "logo_path": "/7cxRWzi4LsVm4Utfpr1hfARNurT.png",
-      "name": "Regency Enterprises",
-      "origin_country": "US"
+    "budget": 356000000,
+    "genres": [
+      {
+        "id": 12,
+        "name": "冒险"
+      },
+      {
+        "id": 878,
+        "name": "科幻"
+      },
+      {
+        "id": 28,
+        "name": "动作"
+      }
+    ],
+    "homepage": "",
+    "id": 299534,
+    "imdb_id": "tt4154796",
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_title": "Avengers: Endgame",
+    "overview": "几近绝望的复仇者们在惊奇队长的帮助下找到灭霸归隐之处，却得知六颗无限宝石均被销毁，希望彻底破灭。五年后，迷失在量子领域的蚁人意外回到现实世界，他的出现为幸存的复仇者们点燃了希望。与美国队长冰释前嫌的托尼找到了穿越时空的方法，星散各地的超级英雄再度集结，他们将分别穿越不同的时代去搜集无限宝石。与此同此，平行宇宙的灭霸察觉了他们的计划。这是一场注定要载入史册的终局之战，超级英雄们为了心中恪守的信念前仆后继……",
+    "popularity": 22.19,
+    "poster_path": "/fXgoEedB0k5TgaYrBqbY3eZ3DAI.jpg",
+    "production_companies": [
+      {
+        "id": 420,
+        "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+        "name": "Marvel Studios",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2019-04-24",
+    "revenue": 2799439100,
+    "runtime": 181,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "english_name": "Japanese",
+        "iso_639_1": "ja",
+        "name": "日本語"
+      },
+      {
+        "english_name": "Xhosa",
+        "iso_639_1": "xh",
+        "name": ""
+      }
+    ],
+    "status": "Released",
+    "tagline": "逆转无限 不惜一切代价",
+    "title": "复仇者联盟4：终局之战",
+    "video": false,
+    "vote_average": 8.238,
+    "vote_count": 26307
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/AoSZyb37ljMAxw0RdeQEBHKtgcc.jpg",
+    "belongs_to_collection": {
+      "id": 386382,
+      "name": "冰雪奇缘（系列）",
+      "poster_path": "/s6CbOJcQpvJwKs7uJ42EeBxF00t.jpg",
+      "backdrop_path": "/s3vdRkK7KZFUDC8HEJo2GRKyVhW.jpg"
     },
-    {
-      "id": 4700,
-      "logo_path": "/A32wmjrs9Psf4zw0uaixF0GXfxq.png",
-      "name": "Linson Entertainment",
-      "origin_country": "US"
+    "budget": 150000000,
+    "genres": [
+      {
+        "id": 10751,
+        "name": "家庭"
+      },
+      {
+        "id": 16,
+        "name": "动画"
+      },
+      {
+        "id": 12,
+        "name": "冒险"
+      },
+      {
+        "id": 35,
+        "name": "喜剧"
+      },
+      {
+        "id": 14,
+        "name": "奇幻"
+      }
+    ],
+    "homepage": "",
+    "id": 330457,
+    "imdb_id": "tt4520988",
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_title": "Frozen II",
+    "overview": "阿伦黛尔王国的公主艾莎因为拥有难以控制的强大魔力而选择封闭心扉，远离家园。在妹妹安娜等的帮助鼓舞下，艾莎终于鼓起勇气拥抱真我获得真正的力量。正当艾莎与安娜终于获得了曾经梦寐以求的生活，艾莎却听到了一个神秘声音的呼唤，这声音许诺将揭示她为何拥有冰雪魔法的真相，而这个神秘的真相也威胁着她的王国。艾莎与安娜不得不再次踏上非凡的旅程，前往未知的魔法森林和暗海。在艰险加倍的旅程中，艾莎和安娜的姐妹深情也更加熠熠生辉……",
+    "popularity": 11.8377,
+    "poster_path": "/ebRkOLVkL1arxKRbXEFVekWtu2x.jpg",
+    "production_companies": [
+      {
+        "id": 2,
+        "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+        "name": "Walt Disney Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 6125,
+        "logo_path": "/tzsMJBJZINu7GHzrpYzpReWhh66.png",
+        "name": "Walt Disney Animation Studios",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2019-11-20",
+    "revenue": 1453683476,
+    "runtime": 103,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "探寻魔力起源 回应命运召唤",
+    "title": "冰雪奇缘2",
+    "video": false,
+    "vote_average": 7.249,
+    "vote_count": 9897
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
+    "belongs_to_collection": {
+      "id": 86311,
+      "name": "复仇者联盟（系列）",
+      "poster_path": "/8HxgBGdTI8Gviy2dKPW0iANYBZx.jpg",
+      "backdrop_path": "/zuW6fOiusv4X9nnW3paHGfXcSll.jpg"
     },
-    {
-      "id": 25,
-      "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
-      "name": "20th Century Fox",
-      "origin_country": "US"
-    },
-    {
-      "id": 20555,
-      "logo_path": "/hD8yEGUBlHOcfHYbujp71vD8gZp.png",
-      "name": "Taurus Film",
-      "origin_country": "DE"
-    }
-  ],
-  "production_countries": [
-    {
-      "iso_3166_1": "DE",
-      "name": "Germany"
-    },
-    {
-      "iso_3166_1": "US",
-      "name": "United States of America"
-    }
-  ],
-  "release_date": "1999-10-15",
-  "revenue": 100853753,
-  "runtime": 139,
-  "spoken_languages": [
-    {
-      "english_name": "English",
-      "iso_639_1": "en",
-      "name": "English"
-    }
-  ],
-  "status": "Released",
-  "tagline": "Mischief. Mayhem. Soap.",
-  "title": "Fight Club",
-  "video": false,
-  "vote_average": 8.438,
-  "vote_count": 30235
-}
+    "budget": 300000000,
+    "genres": [
+      {
+        "id": 12,
+        "name": "冒险"
+      },
+      {
+        "id": 28,
+        "name": "动作"
+      },
+      {
+        "id": 878,
+        "name": "科幻"
+      }
+    ],
+    "homepage": "http://marvel.com/avengers",
+    "id": 299536,
+    "imdb_id": "tt4154756",
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_title": "Avengers: Infinity War",
+    "overview": "随着复仇者联盟及其盟友继续保护世界免受来自任何单一英雄难以承担的威胁，一个新的危险从宇宙的阴影中浮现——灭霸。作为一个星际恶名昭彰的暴君，他的目标是收集所有六颗无限宝石，这些宝石拥有难以想象的力量，并利用它们将扭曲的意志强加于现实的每一个角落。复仇者们为此奋斗的一切都指向了这一刻——地球和整个存在的命运从未如此不确定。",
+    "popularity": 32.3045,
+    "poster_path": "/oK7IP8Yx4pTgZSFE8RD74pwlJtW.jpg",
+    "production_companies": [
+      {
+        "id": 420,
+        "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+        "name": "Marvel Studios",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-04-25",
+    "revenue": 2052415039,
+    "runtime": 156,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "english_name": "Xhosa",
+        "iso_639_1": "xh",
+        "name": ""
+      }
+    ],
+    "status": "Released",
+    "tagline": "十年布局 巅峰一役",
+    "title": "复仇者联盟3：无限战争",
+    "video": false,
+    "vote_average": 8.235,
+    "vote_count": 30494
+  }
+]
